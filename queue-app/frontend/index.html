@@ -6,11 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="acessarServidor()" >
+    <label for=""></label>
+    <input type="text" id="idade">
+    <button onclick="acessarServidor()" > Enter </button>
         <script>
-
             function acessarServidor(){
-                const servidor = "http://localhost:3000/hello"
+                const dado = document.getElementById("dado").value
+                const servidor = "http://localhost:3000/hello/" + dado
                 fetch(servidor).then(async (resposta)=>{
                     if(resposta.ok){
                         const json = await resposta.json()
@@ -23,8 +25,7 @@
                     console.log("fim")
                 })
             }
-
         </script>
-    </button>
+
 </body>
 </html>

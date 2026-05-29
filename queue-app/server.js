@@ -1,16 +1,19 @@
 import express from 'express'
 import cors from 'cors'
-const app = express()
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const app = express()
 
-app.get("/hello", hello)
+app.get("/hello/:dado", hello)
 function hello(requisicao, resposta){
-    console.log("Hello")
+
+    console.log(requisicao.params.dado)
+
     resposta.send({
-        "resposta": "hello"
+        "resposta": requisicao.params.dado
     })
 }
 
